@@ -1,3 +1,4 @@
+const { Op } = require("sequelize")
 const Categoria = require("../models/Categoria");
 const Item = require("../models/Item");
 
@@ -64,6 +65,12 @@ class ItemService {
 
         if (filtros.categoria) {
             where.id_categoria = filtros.categoria;
+        }
+
+        if (filtros.descricao) {
+            where.descricao = {
+                [Op.like]: `%${filtros.descricao}%`
+            };
         }
 
         const itens = await Item.findAll({
