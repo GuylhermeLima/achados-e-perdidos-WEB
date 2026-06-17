@@ -24,7 +24,7 @@ CREATE TABLE item (
     descricao VARCHAR(255) NOT NULL,
     local VARCHAR(255) NOT NULL,
     data DATE NOT NULL,
-    status ENUM('PERDIDO', 'ENCONTRADO') NOT NULL,
+    status ENUM('perdido', 'encontrado', 'reclamado') NOT NULL,
     foto VARCHAR(255),
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP

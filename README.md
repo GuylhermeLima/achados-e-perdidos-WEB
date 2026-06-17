@@ -36,7 +36,7 @@ npm install
 Inicie o servidor:
 
 ```bash
-node src/server.js
+node backend/src/server.js
 ```
 
 ## Endpoints
