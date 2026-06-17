@@ -13,15 +13,16 @@ API REST desenvolvida em Node.js, Express e MySQL para gerenciamento de itens de
 ## Estrutura do Projeto
 
 ```text
-src/
-├── config/
-├── controllers/
-├── models/
-├── routes/
-├── services/
-├── uploads/
-├── app.js
-└── server.js
+backend/
+└── src/
+    ├── config/
+    ├── controllers/
+    ├── models/
+    ├── routes/
+    ├── services/
+    ├── uploads/
+    ├── app.js
+    └── server.js
 ```
 
 ## Executando o Projeto
@@ -60,6 +61,12 @@ Buscar por categoria:
 
 ```http
 GET /itens?categoria=1
+```
+
+Buscar por descrição:
+
+```http
+GET /itens?descricao=azul
 ```
 
 ## Arquitetura
