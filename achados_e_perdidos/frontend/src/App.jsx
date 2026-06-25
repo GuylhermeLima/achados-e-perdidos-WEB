@@ -1,24 +1,38 @@
-import React from "react";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
-import Register from "./pages/Register";
-import Home from "./pages/Home";
+import Cadastro from "./pages/Cadastro";
+import RecuperarSenha from "./pages/RecuperarSenha";
+import Itens from "./pages/Itens";
+import CadastrarItem from "./pages/CadastrarItem";
+import DetalheItem from "./pages/DetalheItem";
+import SolicitarItem from "./pages/SolicitarItem";
 
 function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Navigate to="/login" />} />
+        <Route path="/" element={<Dashboard />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/cadastro" element={<Register />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/cadastro" element={<Cadastro />} />
+        <Route path="/recuperar-senha" element={<RecuperarSenha />} />
+        <Route path="/itens" element={<Itens />} />
+        <Route path="/cadastrar-item" element={<CadastrarItem />} />
+
+        <Route
+          path="/item/:id"
+          element={<DetalheItem />}
+        />
+
+        <Route
+          path="/solicitar-item/:id"
+          element={<SolicitarItem />}
+        />
+
+
       </Routes>
-    </Router>
+    </BrowserRouter>
   );
 }
 
