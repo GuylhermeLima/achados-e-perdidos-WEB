@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from '../services/api';
 import { useNavigate } from "react-router-dom";
+import { getItems } from '../services/itemsService'
 
 function Home() {
   const [user, setUser] = useState(null);
   const [error, setError] = useState("");
+  const [itens, setItens] = useState([])
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -14,11 +16,8 @@ function Home() {
         navigate("/login");
         return;
       }
-
       try {
-        const response = await axios.get("http://localhost:3000/api/perfil", {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        const response = await api.get('/api/perfil')
         setUser(response.data);
       } catch (err) {
         localStorage.removeItem("token");
@@ -26,7 +25,13 @@ function Home() {
       }
     };
 
+    const fetchItens = async () => {
+      const response = await getItems()
+      setItens(response.data)
+    }
+
     fetchProfile();
+    fetchItens();
   }, [navigate]);
 
   const handleLogout = () => {
@@ -39,41 +44,18 @@ function Home() {
   return (
     <div className="container">
       <div className="profile-info">
-        <p>
-          Olá, <strong>{user.nome}</strong>
-        </p>
-        <p>
-          Perfil: <strong>{user.tipo_usuario}</strong>
-        </p>
+        <p>Olá, <strong>{user.nome}</strong></p>
+        <p>Perfil: <strong>{user.tipo_usuario}</strong></p>
       </div>
 
-      {user.tipo_usuario === "Administrador" && (
-        <div
-          style={{
-            marginTop: "2rem",
-            padding: "1rem",
-            border: "1px solid #ccc",
-            borderRadius: "4px",
-          }}
-        >
-          <h3>Configurações</h3>
-          <div style={{ marginTop: "1rem" }}>
-            <label>Tamanho mínimo da senha</label>
-            <input
-              type="number"
-              defaultValue={8}
-              style={{ marginBottom: "1rem" }}
-            />
-            <button
-              onClick={() =>
-                alert("Configuração salva com sucesso! (Apenas demonstrativo)")
-              }
-            >
-              Salvar
-            </button>
+      <div style={{ marginTop: "2rem" }}>
+        <h3>Itens</h3>
+        {itens.map((item) => (
+          <div key={item.id}>
+            <p>{item.descricao} — {item.status}</p>
           </div>
-        </div>
-      )}
+        ))}
+      </div>
 
       <button
         onClick={handleLogout}

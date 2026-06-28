@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import { register } from '../services/authService';
 import { useNavigate, Link } from "react-router-dom";
 
 function Register() {
@@ -26,7 +26,7 @@ function Register() {
     setError("");
     setSuccess("");
     try {
-      await axios.post("http://localhost:3000/api/cadastro", formData);
+      await register(formData);
       setSuccess("Cadastro realizado com sucesso!");
       setTimeout(() => navigate("/login"), 2000);
     } catch (err) {

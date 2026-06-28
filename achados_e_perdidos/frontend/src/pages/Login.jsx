@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import { login } from '../services/authService';
 import { useNavigate, Link } from 'react-router-dom';
 
 function Login() {
@@ -11,7 +11,7 @@ function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3000/api/login', { email, senha });
+      const response = await login({ email, senha });
       localStorage.setItem('token', response.data.token);
       navigate('/home');
     } catch (err) {
