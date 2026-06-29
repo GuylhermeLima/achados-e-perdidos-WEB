@@ -1,0 +1,435 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  overflow-x: hidden;
+  background-color: #FFFFFF;
+  min-width: 320px; 
+}
+
+.landing-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.container-wrapper {
+  width: 100%;
+  max-width: 1200px; 
+  margin: 0 auto;    
+  padding: 0 40px;   
+}
+
+/* ==========================================================================
+   SEÇÃO 1: NAVBAR
+   ========================================================================== */
+.section-hero {
+  background-color: #7B2CBF;
+  color: #FFFFFF;
+  min-height: 40vh; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 120px; 
+  padding-bottom: 60px;
+}
+
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%; 
+  z-index: 1000;
+  background-color: #7B2CBF;
+  padding: 20px 40px; 
+  box-shadow: 0 4px 30px rgba(90, 24, 154, 0.25);
+
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.nav-menu a {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: capitalize;
+  white-space: nowrap; 
+  transition: color 0.2s ease;
+}
+
+.nav-menu a:hover {
+  color: #FFFFFF;
+}
+
+.search-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+  gap: 60px;
+  align-items: center;
+  width: 100%;
+}
+
+.hero-left h1 {
+  font-size: clamp(28px, 4vw, 42px); 
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+
+
+.hero-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-search {
+  width: 100%;
+  max-width: 450px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 18px 22px;
+
+  background: rgba(255, 255, 255, 0.12);
+
+  backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  border-radius: 999px;
+
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.12);
+
+  transition: all 0.3s ease;
+}
+
+.hero-search:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.hero-search:focus-within {
+  border-color: rgba(255, 255, 255, 0.4);
+
+  transform: translateY(-2px);
+}
+
+.search-icon {
+  flex-shrink: 0;
+  opacity: 0.8;
+}
+
+.hero-search input {
+  flex: 1;
+
+  background: transparent;
+  border: none;
+  outline: none;
+
+  margin-left: 12px;
+
+  color: white;
+
+  font-size: 1rem;
+}
+
+.hero-search input::placeholder {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+
+
+.btn-nav:hover {
+  background-color: #a845ff;
+}
+
+
+@media (max-width: 768px) {
+  .btn-nav {
+    width: 100%;
+    max-width: 160px;
+    margin: 20px auto 0 auto;
+    display: block;
+    text-align: center;
+  }
+}
+
+
+/* ==========================================================================
+   SEÇÃO 2: SOBRE O SITE
+   ========================================================================== */
+.section-about {
+  background-color: #FFFFFF;
+  padding: 80px 0;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 60px;
+  align-items: center;
+}
+
+.about-left h2 {
+  font-size: clamp(24px, 3vw, 32px);
+  color: #2D2D2D;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.about-left p {
+  font-size: 16px;
+  color: #555555;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  text-align: justify;
+}
+
+.about-left p strong {
+  color: #7B2CBF;
+}
+
+.btn-action {
+  background-color: #9D4EDD;
+  color: #FFFFFF;
+  border: none;
+  padding: 14px 40px;
+  font-size: 14px;
+  border-radius: 50px;
+  cursor: pointer;
+  text-transform: lowercase;
+  font-weight: 600;
+  transition: background-color 0.2s;
+
+  margin-top: 20px;
+}
+
+.btn-action:hover { background-color: #7B2CBF; }
+
+.about-right {
+  display: flex;
+  justify-content: center;
+}
+
+.about-right .image-frame {
+  width: 100%;
+  max-width: 450px;
+  height: 300px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+  transform: rotate(1.5deg);
+}
+
+.about-right img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* ==========================================================================
+  SEÇÃO 3: EXPLORAR ITENS
+   ========================================================================== */
+.section-testimonials-footer {
+  background-color: #FFFFFF;
+  padding: 60px 0 40px 0;
+  border-top: 1px solid #F0F0F0;
+}
+
+.section-explore {
+  background: #7B2CBF;
+  width: 100%;
+  padding: clamp(60px, 3vw, 120px) 20px;
+}
+
+.explore-content {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.explore-content h2 {
+  font-size: clamp(2rem, 3vw, 4rem);
+  font-weight: 700;
+  color: white;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  margin: 0 0 24px 0;
+}
+
+.explore-content p {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.8;
+  max-width: 650px;
+  margin: 0 auto 40px auto;
+}
+
+.btn-explore {
+
+  text-decoration: none;
+
+  text-align: center;
+
+  background-color: #9D4EDD;
+  color: white;
+  border: none;
+
+  padding: 16px 32px;
+
+  font-size: clamp(1rem, 2vw, 1.1rem);
+  font-weight: 600;
+
+  border-radius: 999px;
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  transition: all 0.3s ease;
+}
+
+.btn-explore:hover {
+  background-color: #5A189A;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .section-explore {
+    padding: 60px 24px;
+  }
+
+  .explore-content h2 {
+    margin-bottom: 16px;
+  }
+
+  .explore-content p {
+    margin-bottom: 32px;
+  }
+
+  .btn-explore {
+    width: 100%;
+    max-width: 270px;
+  }
+}
+
+
+/* ==========================================================================
+   SEÇÃO 4: FOOTER: 
+   ========================================================================== */
+
+
+.footer-structured {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding-top: 40px;
+  border-top: 1px solid #EEEEEE;
+  width: 100%;
+}
+
+.footer-col {
+  flex: 1;
+  min-width: 200px; 
+}
+
+.footer-col h3 {
+  font-size: 15px;
+  color: #7B2CBF;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+
+
+
+
+.social-links {
+  display: flex;
+  gap: 16px;
+}
+
+.social-links a {
+  text-decoration: none;
+  color: #555555;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+
+.footer-links {
+  list-style: none;
+}
+
+.footer-links li {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: #555555;
+  font-size: 14px;
+}
+
+
+.col-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.footer-logo {
+  margin-bottom: 12px;
+}
+
+.copyright {
+  font-size: 12px;
+  color: #757575;
+  white-space: nowrap;
+}
+
+
+@media (max-width: 768px) {
+  .col-right {
+    align-items: flex-start;
+    text-align: left;
+  }
+}
