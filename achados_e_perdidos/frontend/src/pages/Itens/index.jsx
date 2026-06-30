@@ -1,37 +1,20 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { getItems } from "../../services/itemsService";
 import "./index.css";
 
-const itens = [
-    {
-        id: 1,
-        nome: "Mochila preta",
-        local: "Bloco A",
-        data: "20/06/2026",
-        categoria: "Acessórios",
-        imagem:
-            "https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?w=500",
-    },
-    {
-        id: 2,
-        nome: "Carteira",
-        local: "Biblioteca",
-        data: "21/06/2026",
-        categoria: "Documentos",
-        imagem:
-            "https://images.unsplash.com/photo-1627123424574-724758594e93?w=500",
-    },
-    {
-        id: 3,
-        nome: "Garrafa",
-        local: "Laboratório",
-        data: "22/06/2026",
-        categoria: "Objetos",
-        imagem:
-            "https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=500",
-    },
-];
 export default function Itens() {
+    const [itens, setItens] = useState([]);
+
+    useEffect(() => {
+        const fetchItens = async () => {
+            const response = await getItems();
+            setItens(response.data);
+        };
+
+        fetchItens();
+    }, []);
+
     return (
         <div className="itens-page">
 
@@ -96,20 +79,25 @@ export default function Itens() {
                             <Link
                                 key={item.id}
                                 to={`/item/${item.id}`}
-                                className="item-card">
+                                className="item-card"
+                            >
 
                                 <img
-                                    src={item.imagem}
-                                    alt={item.nome}
+                                    src={
+                                        item.foto
+                                            ? `http://localhost:3000/uploads/${item.foto}`
+                                            : "https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?w=800"
+                                    }
+                                    alt={item.descricao}
                                 />
 
                                 <div className="item-info">
 
                                     <span className="categoria">
-                                        {item.categoria}
+                                        {item.Categoria?.nome}
                                     </span>
 
-                                    <h3>{item.nome}</h3>
+                                    <h3>{item.descricao}</h3>
 
                                     <p>
                                         Encontrado em {item.local}

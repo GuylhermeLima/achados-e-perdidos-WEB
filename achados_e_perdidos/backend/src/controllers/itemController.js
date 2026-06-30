@@ -9,6 +9,11 @@ class ItemController {
                 req.body.foto = req.file.filename;
             }
 
+            console.log("req.file:", req.file);
+            console.log("req.body:", req.body);
+
+            req.body.id_usuario = req.user.id;
+
             const item = await itemService.criarItem(req.body);
 
             res.status(201).json(item);
@@ -116,5 +121,5 @@ class ItemController {
     }
 
 }
-    
+
 module.exports = new ItemController();
